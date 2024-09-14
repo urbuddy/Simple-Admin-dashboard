@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Partners</h2>
+        <form method="GET" class="form-inline mb-3">
+            <input type="text" name="q" class="form-control mr-2" placeholder="Search by name" value="{{ request.GET.q }}">
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile No.</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for partner in partners %}
+                <tr>
+                    <td>{{ partner.name }}</td>
+                    <td>{{ partner.email }}</td>
+                    <td>{{ partner.mobile_no }}</td>
+                    <td>{{ partner.address }}</td>
+                    <td>
+                        <a href="{% url 'partner_detail' partner.pk %}" class="btn btn-info btn-sm">View</a>
+                        <a href="{% url 'edit_partner' partner.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'add_partner' %}" class="btn btn-success mt-3">Add New Partner</a>
+        <a href="{% url 'dashboard' %}" class="btn btn-primary mt-3">Dashboard</a>
+    </div>
+</body>
+</html>

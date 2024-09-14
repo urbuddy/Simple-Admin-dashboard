@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Partner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Edit Partner Details</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Partner Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ form.name.value }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Partner Email:</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ form.email.value }}" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile_no">Partner Mobile No.:</label>
+                <input type="number" class="form-control" id="mobile_no" name="mobile_no" value="{{ form.mobile_no.value }}" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea class="form-control" id="address" name="address">{{ form.address.value }}</textarea>
+            </div>
+            <a type="submit" class="btn btn-success">Save Changes</a>
+            <a href="{% url 'partner_detail' partner.pk %}" class="btn btn-primary">Back to Partner Details</a>
+            <a href="{% url 'partner_list' %}" class="btn btn-secondary">Back to Partners List</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Admin Dashboard</h2>
+        <a href="{% url 'logout' %}" class="btn btn-danger mt-4 float-right">logout</a>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Total Partners: {{ total_partners }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h5>Recent Partners</h5>
+                <ul class="list-group">
+                    {% for partner in recent_partners %}
+                        <li class="list-group-item">{{ partner.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <a href="{% url 'partner_list' %}" class="btn btn-primary mt-4">View Partners</a>
+    </div>
+</body>
+</html>

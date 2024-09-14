@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Partner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Add New Partner</h2>
+        <main role="main" class="container">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </main>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Partner Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Partner Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile_no">Partner Mobile No.:</label>
+                <input type="number" class="form-control" id="mobile_no" name="mobile_no" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Partner Address:</label>
+                <textarea class="form-control" id="address" name="address"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Add Partner</button>
+            <a href="{% url 'partner_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
